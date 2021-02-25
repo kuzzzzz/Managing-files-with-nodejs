@@ -2,7 +2,7 @@ const fs = require("fs");
 
 module.exports.read = () => {
   let totalSize = 0;
-
+  
   fs.stat("./data/app.log", (err, { size }) => {
     totalSize = size;
   });
