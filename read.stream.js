@@ -1,4 +1,5 @@
 const { createReadStream } = require("fs");
+const { start } = require("repl");
 
 const stream = createReadStream("./data/app.log", {
   highWaterMark: 9550,
@@ -6,6 +7,10 @@ const stream = createReadStream("./data/app.log", {
 });
 
 stream.on("data", (data) => {
+  stream.pause();
   console.log(data);
-});
 
+  setTimeout(() => {
+    stream.resume();
+  }, 2000);
+});
